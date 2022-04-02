@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>webrtc-test</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <div>
+        <video id="video" width="600px" controls></video>
+    </div>
+    <div>
+        <button class="record-btn">录制</button>
+        <button class="stop-btn" style="display: none;">关闭</button>
+        <button class="download-btn" style="display: none;">下载</button>
+        <button class="pause-btn" style="display: none;">暂停</button>
+    </div>
+    <script src="./displayRecorder.js"></script>
+    <script>
+        // 所有操作按钮
+        const recordBtn = document.querySelector('.record-btn'); // 开始
+        const stopBtn = document.querySelector('.stop-btn') // 结束 
+        const downloadBtn = document.querySelector('.download-btn') // 下载
+
+        const pauseBtn = document.querySelector('.pause-btn'); // 暂停 / 继续
+        // 创建 录制工具
+
+        const displayRecorder = new DisplayRecorder();
+        // 绑定事件
+        // 开始
+        recordBtn.addEventListener('click', () => {
+            displayRecorder.open()
+            recordBtn.style.display = 'none'
+            stopBtn.style.display = 'inline-block'
+            pauseBtn.style.display = 'inline-block'
+        })
+        // 暂停/开始
+        pauseBtn.addEventListener('click', () => {
+            console.log(displayRecorder.getState() === 'recording')
+            if (displayRecorder.getState() === 'recording') {
+                displayRecorder.pause();
+                pauseBtn.innerText = '继续'
+            } else {
+                displayRecorder.resume();
+                pauseBtn.innerText = '暂停'
+            }
+        })
+        // 结束
+        stopBtn.addEventListener('click', () => {
+            displayRecorder.close();
+            stopBtn.style.display = 'none'
+            pauseBtn.style.display = 'none'
+            downloadBtn.style.display = 'inline-block'
+        })
+        // 下载
+        downloadBtn.addEventListener('click', () => displayRecorder.download())
+    </script>
+</body>
+
+</html>
