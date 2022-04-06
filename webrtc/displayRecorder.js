@@ -94,14 +94,14 @@ const mergeTracks = (baseStrem, extraStream) => {
     return baseStrem;
   }
   // 将两个音轨和成一个音轨 - -
-  var context = new AudioContext();
-  var baseSource = context.createMediaStreamSource(baseStrem);
-  var extraSource = context.createMediaStreamSource(extraStream);
-  var dest = context.createMediaStreamDestination();
+  let context = new AudioContext();
+  let baseSource = context.createMediaStreamSource(baseStrem);
+  let extraSource = context.createMediaStreamSource(extraStream);
+  let dest = context.createMediaStreamDestination();
 
   // 设置 gain 增益
-  var baseGain = context.createGain();
-  var extraGain = context.createGain();
+  let baseGain = context.createGain();
+  let extraGain = context.createGain();
   baseGain.gain.value = 0.8;
   extraGain.gain.value = 0.8;
   // connect
