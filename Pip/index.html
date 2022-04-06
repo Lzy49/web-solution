@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    .video {
+      width: 300px;
+      height: 200px;
+      border: 1px solid #eee;
+      box-shadow: 2px 2px 10px #000;
+    }
+
+    h5 {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      line-height: 30px;
+      font-size: 20px;
+      font-weight: 0;
+    }
+  </style>
+  <div>
+    <h5>video-mp4</h5>
+    <video class="video" id="video-mp4" controls="controls" src="./short.mp4"></video>
+    <button id="video-mp4-button">开启画中画</button>
+  </div>
+  <div>
+    <h5>video-ogv</h5>
+    <video class="video" id="video-ogv" controls="controls" src="./movie.ogv"></video>
+    <button id="video-ogv-button">开启画中画</button>
+  </div>
+  <script src="./pictureInPicture.js"></script>
+  <script>
+    const videoMp4Btn = document.querySelector('#video-mp4-button')
+    const videoOgvBtn = document.querySelector('#video-ogv-button')
+    // 实例化第一个画中画
+    let videoMp4Pip = new PictureInPicture(document.querySelector('#video-mp4'))
+    videoMp4Pip.addEnterEvent(() => {
+      console.log('开启了第一个画中画')
+    })
+    videoMp4Pip.addLeaveEvent(() => {
+      console.log('关闭了第一个画中画')
+    })
+    //实例化第二个画中画
+    let videoOgvPip = new PictureInPicture(document.querySelector('#video-ogv'))
+    videoOgvPip.addEnterEvent(() => {
+      console.log('开启了第二个画中画')
+    })
+    videoOgvPip.addLeaveEvent(() => {
+      console.log('关闭了第二个画中画')
+    })
+    videoMp4Btn.addEventListener('click', () => {
+      if (videoMp4Btn.innerHTML === '开启画中画') {
+        videoMp4Pip.open();
+        videoMp4Btn.innerHTML = '关闭画中画'
+      } else {
+        videoMp4Pip.close();
+        videoMp4Btn.innerHTML = '开启画中画'
+      }
+    })
+    videoOgvBtn.addEventListener('click', () => {
+      if (videoOgvBtn.innerHTML === '开启画中画') {
+        videoOgvPip.open();
+        videoOgvBtn.innerHTML = '关闭画中画'
+      } else {
+        videoOgvPip.close();
+        videoOgvBtn.innerHTML = '开启画中画'
+      }
+    })
+  </script>
+</body>
+
+</html>
