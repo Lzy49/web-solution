@@ -1,0 +1,12 @@
+{
+  "name": "dps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "draw-page-structure": "^1.0.8"
+  },
+  "scripts": {
+    "start": "npx dps start"
+  }
+}
