@@ -1,0 +1,12 @@
+{
+  "name": "awesome-skeleton",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-skeleton": "^0.1.5"
+  },
+  "scripts": {
+    "skeleton": "skeleton -c ./skeleton.config.json"
+  }
+}

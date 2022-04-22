@@ -1,0 +1,11 @@
+{
+  "pageName": "gotin",
+  "pageUrl": "http://localhost:8080/",
+  "openRepeatList": false,
+  "device": "Blackberry PlayBook landscape",
+  "minGrayBlockWidth": 80,
+  "minGrayPseudoWidth": 10,
+  "debug": true,
+  "debugTime": 10000,
+  "cookies": []
+}
